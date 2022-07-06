@@ -6,6 +6,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.4.0",
+    "ext-json": "*",
     "rubin/ddd-domain": "^1.0"
   },
   "autoload" : {
