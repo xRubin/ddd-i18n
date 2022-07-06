@@ -7,7 +7,7 @@ use ddd\i18n\values\MultiLanguageString;
 final class MultiLanguageStringFabric
 {
     /** @var array|string[] */
-    public static array $languages = ['en', 'ru'];
+    public static array $languages = ['en' => 'en', 'ru' => 'ru'];
     /** @var callable fn($language, $key, array $params) */
     public static $translateCallback;
 
