@@ -8,7 +8,7 @@ final class MultiLanguageStringFabric
 {
     /** @var array|string[] */
     public static array $languages = ['en', 'ru'];
-    /** @var callable */
+    /** @var callable fn($language, $key, array $params) */
     public static $translateCallback;
 
     /**
@@ -40,7 +40,9 @@ final class MultiLanguageStringFabric
     {
         return self::fromArray(
             array_map(
-                is_callable(self::$translateCallback) ? call_user_func_array(self::$translateCallback, $params) : $key,
+                fn($language) => is_callable(self::$translateCallback)
+                    ? call_user_func_array(self::$translateCallback, [$language, $key, $params])
+                    : $key,
                 self::$languages
             )
         );
