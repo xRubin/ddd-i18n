@@ -6,6 +6,7 @@ use ddd\domain\values\AbstractDomainValue;
 
 class MultiLanguageString extends AbstractDomainValue
 {
+    private const DEFAULT_LANGUAGE_KEY = 'en';
     /** @var string[] */
     private array $value = [];
     private ?string $default = null;
@@ -26,7 +27,7 @@ class MultiLanguageString extends AbstractDomainValue
         if (array_key_exists($language, $this->value))
             return $this->value[$language];
 
-        return $this->default;
+        return $this->value[static::DEFAULT_LANGUAGE_KEY] ?? $this->default;
     }
 
     public function setForLanguage(string $language, ?string $value): self
